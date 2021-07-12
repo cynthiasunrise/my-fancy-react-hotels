@@ -1,0 +1,145 @@
+.resultados,
+.sinResultados {
+  grid-column: content-start / content-end;
+  grid-row: leyendaFiltros-end / bottom;
+  padding: 2em 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .resultados,
+  .sinResultados {
+    grid-column: page-start / page-end;
+  }
+}
+
+.resultados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  place-items: center;
+}
+
+/* .resultados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.sinResultados__info {
+  text-align: center;
+}
+
+.hotel {
+  max-width: 450px;
+  box-shadow: 5px 5px 10px 2.5px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (min-width: 1024px) {
+  .resultados {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hotel {
+    min-width: 1000px;
+    display: flex;
+    align-items: center;
+    line-height: 1.3;
+    box-shadow: unset;
+  }
+
+  .hotel__img-container {
+    width: 38%;
+  }
+
+  .hotel__contenido {
+    width: 60%;
+  }
+
+  .hotel:nth-child(odd) .hotel__img-container {
+    order: 1;
+    margin-right: 2%;
+  }
+
+  .hotel:nth-child(odd) .hotel__contenido {
+    order: 2;
+  }
+
+  .hotel:nth-child(odd) .hotel__contenido .hotel__btn-container {
+    justify-content: flex-end;
+  }
+
+  .hotel__btn-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hotel:nth-child(even) .hotel__img-container {
+    order: 2;
+    margin-left: 2%;
+  }
+
+  .hotel:nth-child(even) .hotel__contenido {
+    order: 1;
+  }
+
+  .hotel:nth-child(even) .hotel__contenido .hotel__btn-container {
+    justify-content: flex-start;
+  }
+
+  .hotel__img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .hotel__btn-container {
+    display: flex;
+  }
+
+  .hotel__btn-center {
+    display: inline-block;
+    width: 300px;
+  }
+}
+
+.hotel__contenido {
+  padding: 1rem 0.8rem;
+}
+
+.hotel__nombre {
+  color: var(--color-azul-oscuro);
+}
+
+.hotel__ubicacion,
+.hotel__ubicacion-link {
+  color: var(--color-accent);
+}
+
+.hotel__icon,
+.sinResultados__icon {
+  margin-right: 0.5rem;
+  color: var(--color-accent);
+}
+
+.hotel__ubicacion-link {
+  font-weight: var(--font-weight-semi-bold);
+  letter-spacing: 0.5px;
+}
+
+.hotel__fecha {
+  color: var(--color-azul-oscuro);
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.hotel__detalles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hotel__precio .hotel__icon:not(:last-of-type) {
+  margin-right: 0;
+}
+
+.hotel__precio {
+  margin-bottom: 0.8rem;
+}
