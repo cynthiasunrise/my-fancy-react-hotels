@@ -1,4 +1,4 @@
-# _FANCY REACT HOTELS_
+# FANCY _REACT_ HOTELS
 
 Here I show some beautiful and fancy latin hotels according to some filters, using React ❤️ ... yuju!!!!
 
