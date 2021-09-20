@@ -1,15 +1,13 @@
 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
   background-image: url('../../images/header.jpg');
   background-size: cover;
   background-position: center;
   background-color: rgba(108, 74, 1, 0.4);
   background-blend-mode: multiply;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  grid-column: page-start / page-end;
-  grid-row: header-start / header-end;
 }
 
 .header__titulo {

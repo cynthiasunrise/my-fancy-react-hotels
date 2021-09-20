@@ -1,10 +1,10 @@
-import { getSelectAllLabel } from './../data';
+import { getSelectAllLabel } from './../../data';
 
-function InputSelect({ label, options, value, handler }) {
+function InputSelect({ label, name, options, value, onChange }) {
   const allLabel = getSelectAllLabel(label);
 
   const handleChange = (event) => {
-    handler(event.target.value);
+    onChange(event.target.name, event.target.value);
   };
 
   return (
@@ -12,9 +12,10 @@ function InputSelect({ label, options, value, handler }) {
       <label>
         <span className="filtros__label">{label}:</span>
         <select
+          className="filtros__control"
+          name={name}
           value={value}
           onChange={handleChange}
-          className="filtros__control"
         >
           <option value="all">{allLabel}</option>
           {options.map((option) => (

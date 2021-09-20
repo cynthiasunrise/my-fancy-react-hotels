@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-import Filters from './components/Filters';
-import { getPais, getTamaño } from './components/Filters/data';
-import Header from './components/Header';
-import HotelList from './components/HotelList';
-import Legend from './components/Legend';
 import hotels from './hotels';
-import { toDate, validarFechas } from './utilities';
+import Header from './components/Header';
+import Filters from './components/Filters';
+import Legend from './components/Legend';
+import HotelList from './components/HotelList';
+import { getTomorrow, formatFromInputToDate, validarFechas } from './utilities';
+import { getPais, getTamaño } from './components/Filters/data';
 
 const initialValues = {
   checkinDate: '',
@@ -40,21 +40,23 @@ function App() {
 
   const filteredHotels =
     (filters.checkinDate && !filters.checkoutDate) ||
-    (filters.checkoutDate && !filters.checkinDate) ||
-    filters.error
+    (filters.checkoutDate && !filters.checkinDate)
       ? null
       : hotels
-          .filter((hotel) => {
-            return filters.checkinDate === '' && filters.checkoutDate === ''
+          .filter((hotel) =>
+            filters.checkinDate === ''
               ? true
-              : hotel.availabilityFrom <=
-                  toDate(filters.checkinDate).getTime() + 86400000 &&
-                  hotel.availabilityFrom <
-                    toDate(filters.checkoutDate).getTime() &&
-                  hotel.availabilityTo >=
-                    toDate(filters.checkoutDate).getTime() &&
-                  hotel.availabilityTo > toDate(filters.checkinDate).getTime();
-          })
+              : formatFromInputToDate(filters.checkinDate).getTime() <=
+                hotel.availabilityFrom
+          )
+          .filter((hotel) =>
+            filters.checkoutDate === ''
+              ? true
+              : hotel.availabilityTo <=
+                formatFromInputToDate(
+                  getTomorrow(filters.checkoutDate)
+                ).getTime()
+          )
           .filter((hotel) =>
             filters.country === 'all'
               ? true

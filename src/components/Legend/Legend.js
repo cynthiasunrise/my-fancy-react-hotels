@@ -1,56 +1,58 @@
+import { getLongFormatDate, toDate } from './../../utilities';
+import {
+  getPais,
+  getPrecio,
+  getSelectAllLabel,
+  getTamaño,
+} from './../Filters/data';
 import LegendItem from './elements/LegendItem';
-import { getPais, getPrecio, getTamaño } from './../Filters/data';
-import { formatFromInputToDate, getLongFormatDate } from './../../utilities';
-import { getSelectAllLabel } from './../Filters/data';
 import './Legend.css';
 
-const Legend = ({ filters }) => {
-  let { fechaIngreso, fechaSalida, pais, precio, tamaño } = filters;
+const Legend = ({ filters, hotelsLength }) => {
+  let { checkinDate, checkoutDate, country, price, size, error } = filters;
 
-  fechaIngreso =
-    fechaIngreso === ''
-      ? fechaIngreso
-      : getLongFormatDate(formatFromInputToDate(fechaIngreso));
-  fechaSalida =
-    fechaSalida === ''
-      ? fechaSalida
-      : getLongFormatDate(formatFromInputToDate(fechaSalida));
-  pais =
-    pais === 'all'
+  checkinDate = checkinDate ? getLongFormatDate(toDate(checkinDate)) : '';
+  checkoutDate = checkoutDate ? getLongFormatDate(toDate(checkoutDate)) : '';
+  country =
+    country === 'all'
       ? `En ${getSelectAllLabel('Pais')}`
-      : `En ${getPais(pais).label}`;
-  precio =
-    precio === 'all'
+      : `En ${getPais(country).label}`;
+  price =
+    price === 'all'
       ? `De ${getSelectAllLabel('Precio')}`
-      : `De precio ${getPrecio(precio).label}`;
-  tamaño =
-    tamaño === 'all'
+      : `De precio ${getPrecio(price).label}`;
+  size =
+    size === 'all'
       ? `De ${getSelectAllLabel('Tamaño')}`
-      : `De tamaño ${getTamaño(tamaño).label}`;
+      : `De tamaño ${getTamaño(size).label}`;
 
   const getDateLabel = () => {
-    return fechaIngreso === '' ? (
+    return checkinDate === '' ? (
       ':'
     ) : (
       <>
         {' '}
-        del <span className="hotel__fecha">{fechaIngreso}</span> al{' '}
-        <span className="hotel__fecha">{fechaSalida}</span>:
+        del <span className="hotel__fecha">{checkinDate}</span> al{' '}
+        <span className="hotel__fecha">{checkoutDate}</span>:
       </>
     );
   };
 
   return (
     <section className="leyendaFiltros">
-      <div className="leyendaFiltros__container">
+      <div className="container">
         <p className="leyenda__rotulo">
-          Mostrando Hoteles disponibles{getDateLabel()}
+          {hotelsLength != null &&
+            `Mostrando ${hotelsLength} ${
+              hotelsLength === 1 ? 'Hotel disponible' : 'Hoteles disponibles'
+            }`}{' '}
+          {hotelsLength !== null && getDateLabel()}
         </p>
 
         <div className="leyenda__items">
-          <LegendItem selection={pais} />
-          <LegendItem selection={precio} />
-          <LegendItem selection={tamaño} />
+          <LegendItem selection={country} />
+          <LegendItem selection={price} />
+          <LegendItem selection={size} />
         </div>
       </div>
     </section>

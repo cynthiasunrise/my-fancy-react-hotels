@@ -1,38 +1,21 @@
-import Button from '../../Button';
-import { getLongFormatDate } from './../../../utilities';
+import Button from '../../../Button';
+import { getLongFormatDate } from '../../../../utilities';
+import { getPrecio } from './../../../Filters/data';
 
 const Hotel = ({ hotel }) => {
   const fechaInicio = getLongFormatDate(hotel.availabilityFrom);
   const fechaFin = getLongFormatDate(hotel.availabilityTo);
 
   const obtenerPrecio = () => {
-    if (hotel.price === 1)
-      return (
-        <p className="hotel__precio">
-          <i className="hotel__icon fas fa-dollar-sign"></i>Económico
-        </p>
-      );
-    if (hotel.price === 2)
-      return (
-        <p className="hotel__precio">
-          <i className="hotel__icon fas fa-dollar-sign"></i>
-          <i className="hotel__icon fas fa-dollar-sign"></i>Confort
-        </p>
-      );
-    if (hotel.price === 3)
-      return (
-        <p className="hotel__precio">
-          <i className="hotel__icon fas fa-dollar-sign"></i>
-          <i className="hotel__icon fas fa-dollar-sign"></i>
-          <i className="hotel__icon fas fa-dollar-sign"></i>Lujos
-        </p>
-      );
     return (
       <p className="hotel__precio">
-        <i className="hotel__icon fas fa-dollar-sign"></i>
-        <i className="hotel__icon fas fa-dollar-sign"></i>
-        <i className="hotel__icon fas fa-dollar-sign"></i>
-        <i className="hotel__icon fas fa-dollar-sign"></i>Magnífico
+        {[...Array(hotel.price)].map((e, i) => (
+          <i
+            key={`${hotel.name}_${i}`}
+            className="hotel__icon fas fa-dollar-sign"
+          ></i>
+        ))}
+        {` ${getPrecio(`${hotel.price}`).label}`}
       </p>
     );
   };

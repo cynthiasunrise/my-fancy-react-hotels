@@ -1,6 +1,1 @@
-export {
-  getLongFormatDate,
-  formatFromInputToDate,
-  getTomorrow,
-  validarFechas,
-} from './utilities';
+export { getLongFormatDate, toDate, validarFechas } from './dates';

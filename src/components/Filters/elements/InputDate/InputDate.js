@@ -1,6 +1,6 @@
-function InputDate({ label, value, handler, error }) {
+function InputDate({ label, name, value, onChange }) {
   const handleChange = (event) => {
-    handler(event.target.value);
+    onChange(event.target.name, event.target.value);
   };
 
   return (
@@ -9,9 +9,10 @@ function InputDate({ label, value, handler, error }) {
         <span className="filtros__label">{label}:</span>
         <input
           type="date"
+          className="filtros__control"
+          name={name}
           value={value}
           onChange={handleChange}
-          className="filtros__control"
         />
       </label>
     </div>

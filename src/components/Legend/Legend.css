@@ -1,20 +1,6 @@
 .leyendaFiltros {
-  grid-column: page-start / page-end;
-  grid-row: header-end / leyendaFiltros-end;
   background-color: #f4f4f4;
-  padding: 7.5em 5vw 1rem;
-}
-
-@media screen and (min-width: 700px) {
-  .leyendaFiltros {
-    padding: 6em 5vw 1rem;
-  }
-}
-
-@media screen and (min-width: 1053px) {
-  .leyendaFiltros {
-    padding: 5em 5vw 1rem;
-  }
+  padding: 1rem 0;
 }
 
 @media screen and (min-width: 1000px) {
@@ -22,31 +8,21 @@
     display: flex;
     justify-content: center;
   }
-
-  .leyendaFiltros__container {
-    width: 1000px;
-  }
 }
 
 .leyenda__items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  row-gap: 0.3rem;
+  row-gap: 0.5rem;
+  column-gap: 1rem;
 }
 
 @media screen and (min-width: 600px) {
   .leyenda__items {
     text-align: center;
+    column-gap: 2rem;
   }
 }
-
-.leyenda__items > * {
-  width: 92%;
-}
-
-/* .leyenda__items > * + * {
-  margin-top: .3rem;
-} */
 
 .leyenda__rotulo {
   margin-bottom: 0.6rem;
@@ -58,5 +34,4 @@
   font-size: 14px;
   padding: 0.4rem 1rem;
   border-radius: 15px;
-  /* width: 98%; */
 }

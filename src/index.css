@@ -1,29 +1,19 @@
 /* ############################ CSS VARIABLES ############################ */
 :root {
-  /* Colores */
   --color-blanco: #fff;
   --color-negro: #000;
-  --color-gris: #424242;
   --color-accent: #fb8500;
   --color-azul-oscuro: #023047;
 
-  /* Tipografía */
   --font-family-body: 'Alegreya Sans', sans-serif;
   --font-family-titulos: 'Alegreya', serif;
 
-  --font-size-titulo: 1.5rem; /* 24px */
-  --font-size-texto-item: 1.125rem; /* 18px */ /* para items de menu y botones*/
-  --font-size-texto-normal: 1rem; /* 16px */
-  --font-size-texto-small: 0.875rem; /* 16px */
+  --font-size-titulo: 1.5rem;
+  --font-size-texto-normal: 1rem;
+  --font-size-texto-small: 0.875rem;
 
-  --font-weight-light: 300;
   --font-weight-regular: 400;
-  --font-weight-medium: 500;
   --font-weight-semi-bold: 600;
-  --font-weight-extra-bold: 800;
-
-  /* z index */
-  --z-fixed: 2;
 }
 
 /* ############################ RESET ############################# */
@@ -51,8 +41,6 @@ body {
   line-height: 1.6;
 }
 
-/* ############################ UTILIDADES ############################# */
-/* Tipografía */
 .texto-titulo {
   font-family: var(--font-family-titulos);
   font-size: var(--font-size-titulo);
@@ -65,11 +53,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-.texto-blanco {
-  color: var(--color-blanco);
-}
-
-/* ############################ COMPONENTES ############################# */
 .btn {
   background-color: var(--color-accent);
   color: var(--color-blanco);
@@ -86,11 +69,16 @@ body {
   color: var(--color-blanco);
 }
 
+.container {
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 500px) {
   :root {
-    --font-size-titulo: 1.625rem; /* 26px */
-    --font-size-texto-item: 1.25rem; /* 20px */
-    --font-size-texto-normal: 1.125rem; /* 18px */
-    --font-size-texto-small: 1rem; /* 18px */
+    --font-size-titulo: 1.625rem;
+    --font-size-texto-normal: 1.125rem;
+    --font-size-texto-small: 1rem;
   }
 }

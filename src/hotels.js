@@ -2,7 +2,7 @@
 // En una aplicación convencional estos datos provendrían desde un back-end pero a los fines de este ejercicio utilizaremos variables pre-definidas.
 // Utilizamos fechas dinámicas para que la aplicación siempre muestre un rango de días entre la fecha actual y el futuro.
 
-const today = new Date();
+const today = new Date().setHours(0, 0, 0);
 const hotels = [
   {
     slug: 'la-bamba-de-areco',

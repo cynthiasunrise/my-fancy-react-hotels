@@ -1,4 +1,4 @@
-const NoHotel = () => {
+function NoHotel() {
   return (
     <p className="sinResultados__info">
       <i className="sinResultados__icon fas fa-exclamation-circle fa-2x"></i>
@@ -6,6 +6,6 @@ const NoHotel = () => {
       específica. Por favor, intente una nueva búsqueda.
     </p>
   );
-};
+}
 
 export default NoHotel;

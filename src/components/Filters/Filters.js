@@ -4,25 +4,8 @@ import Button from '../Button';
 import { paises, precios, tamaños } from './data';
 import './Filters.css';
 
-function Filters({ filtersAndHandlers }) {
-  const {
-    fechaIngreso,
-    handleFechaIngreso,
-    fechaSalida,
-    handleFechaSalida,
-    pais,
-    handlePais,
-    precio,
-    handlePrecio,
-    tamaño,
-    handleTamaño,
-    handleClean,
-    error,
-  } = filtersAndHandlers;
-
-  const handleClick = () => {
-    handleClean();
-  };
+function Filters({ filters, updateFilters }) {
+  const { checkinDate, checkoutDate, country, price, size, error } = filters;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,42 +13,49 @@ function Filters({ filtersAndHandlers }) {
 
   return (
     <section className="filtros">
-      <form onSubmit={handleSubmit} className="filtros__form">
-        <InputDate
-          label="Fecha Ingreso"
-          value={fechaIngreso}
-          handler={handleFechaIngreso}
-        />
-        <InputDate
-          label="Fecha Salida"
-          value={fechaSalida}
-          handler={handleFechaSalida}
-        />
-        <InputSelect
-          label="Pais"
-          options={paises}
-          value={pais}
-          handler={handlePais}
-        />
-        <InputSelect
-          label="Precio"
-          options={precios}
-          value={precio}
-          handler={handlePrecio}
-        />
-        <InputSelect
-          label="Tamaño"
-          options={tamaños}
-          value={tamaño}
-          handler={handleTamaño}
-        />
-        <Button
-          onClick={handleClick}
-          label="Limpiar"
-          cssClass="filtros__group"
-        />
-      </form>
-      <span className="filtros__validacion">{error}</span>
+      <div className="container">
+        <form onSubmit={handleSubmit} className="filtros__form">
+          <InputDate
+            label="Fecha Ingreso"
+            value={checkinDate}
+            name="checkinDate"
+            onChange={updateFilters}
+          />
+          <InputDate
+            label="Fecha Salida"
+            value={checkoutDate}
+            name="checkoutDate"
+            onChange={updateFilters}
+          />
+          <InputSelect
+            label="Pais"
+            options={paises}
+            value={country}
+            name="country"
+            onChange={updateFilters}
+          />
+          <InputSelect
+            label="Precio"
+            options={precios}
+            value={price}
+            name="price"
+            onChange={updateFilters}
+          />
+          <InputSelect
+            label="Tamaño"
+            options={tamaños}
+            value={size}
+            name="size"
+            onChange={updateFilters}
+          />
+          <Button
+            cssClass="filtros__group"
+            label="Limpiar"
+            onClick={() => updateFilters(null)}
+          />
+        </form>
+        <span className="filtros__validacion">{error}</span>
+      </div>
     </section>
   );
 }
