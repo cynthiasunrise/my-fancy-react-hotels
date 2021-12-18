@@ -1,7 +1,14 @@
-# FANCY _REACT_ HOTELS
+# my fancy react hotels
 
-Here I show some beautiful and fancy latin hotels according to some filters, using React ❤️ ... yuju!!!!
+- **Framework**: [CRA-Create React App](https://create-react-app.dev/)
+- **Deployment**: [Netlify](https://www.netlify.com/)
+- **Styling**: CSS
 
-## Live Demo
+## Running Locally
 
-- 👉 Please go to: https://paradise-react-hotels.netlify.app/ 💻
+```bash
+$ git clone https://github.com/cynthiasunrise/my-fancy-react-hotels.git
+$ cd my-fancy-react-hotels
+$ npm install
+$ npm start
+```
